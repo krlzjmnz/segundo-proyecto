@@ -1,27 +1,31 @@
-import React from 'react'
-import {StyleSheet, View, Text} from 'react-native'
+import React, {useState} from 'react'
+import {Button, StyleSheet, Text, View} from 'react-native'
 
-export default function App() {
-  return(
-    <View style={styles.container}>
-          <Text style={styles.text}>Texto en caja texto</Text>
-    </View>
+export default function App(){
+    const [count, setCount] =useState(0)
 
-  )
+    return (
+        <View style={styles.container}>
+            <Button
+                title={'Oprime me'}
+                onPress={()=>{
+                    setCount(count+1)
+                }}
+            />
+            <Text style={styles.text}>{`Pressed ${count} times`}</Text>
+        </View>
+    )
 }
 
 const styles=StyleSheet.create({
-  container:{
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems:'center',
-    justifyContent:'center',
-  },
-  text:{
-    color: 'rgb(59,108,212)',
-    fontSize: 42,
-    fontWeight: '100',
-    textAlign: 'center',
-  },
+    container:{
+        flex:1,
+        alignItems: 'center',
+        justifyContent:'center',
+    },
+    text:{
+        fontSize: 18,
+        padding:12,
+    },
 
 })
