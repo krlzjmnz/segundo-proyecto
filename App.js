@@ -1,40 +1,32 @@
-import React {useState} from 'react'
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import React from 'react'
+import {FlatList, StyleSheet, Text} from 'react-native'
 
-export default function App(){
-  const [count, setCount] = useState(0)
+const items =[
+    {id:'0', text:'primer elemento'},
+    {id:'1', text:'segundo elemento'},
+    {id:'2', text:'tercer elemento'},
+    {id:'3', text:'cuarto elemento'},
+    {id:'4', text:'quinto elemento'},
+]
 
-  return (
-    <View style={styles.container}>
-    <TouchableOpacity
-    style={styles.button}
-    activeOpacity={0.7}
-    onPress={()=>{
-      setCount(count+1)
-    }}
-    >
-    <Text style={styles.text}>press me!</Text>
-    </TouchableOpacity>
-    <Text style={styles.text}>{`pressed ${count} times`}</Text>
-    </View>
-  )
+export default function App() {
+    return (
+        <FlatList
+            style={styles.container}
+            data={items}
+            renderItem={({item})=><Text style={styles.row}>{item.text}</Text>}
+            keyExtractor={(item)=> item.id}
+        />
+    )
 }
 
-const styles=StyleSheet.creeate({
-  container:{
-    flex:1,
-    alignItems:'center',
-    justifycontent:'center'
-  },
-  button:{
-    padding:40,
-    borderRadius:4,
-    borderWidth:1,
-    boderColor:'green',
-    backgroundColor:'lightgreen',
-  },
-  text:{
-    fontSize:18,
-    padding:12,
-  },
+const styles= StyleSheet.create({
+    container:{
+        flex:1,
+    },
+    row:{
+        padding: 15,
+        marginBottom:5,
+        backgroundColor: 'skyblue',
+    },
 })
